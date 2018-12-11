@@ -8,9 +8,11 @@ Currently only queries for a single field/single value i.e.  APN = 1234508  Mayb
 - Query parameters have to be in this order in the url:  tablename, fieldname, value.   
 based on the below example config, if you wanted to query a CountyParcel by url parameters you could append this to your cmv url:
 ?opensomething=CountyParcels&opensomething=APN&opensomething=1234567
-where 1234567 is the apn you're querying.  
-- Also the tablename parameter is arbitrary (it doenst need to be a tablename in your gis or something, the layer is specified by the mapserver number) but the tablename you specify in a url has to match the tablename in each config  (the first parameter).  
-example config in viewer.js
+where 1234567 is the apn you're querying. 
+- Any field can be specified for a configured layer without having to change the config.  For example, above was shown using ?opensomething=CountyParcels&opensomething=APN&opensomething=1234567 to query a parcel, but could have also been set to ?opensomething=CountyParcels&opensomething=PIN&opensomething=012-345-67
+- Also the tablename parameter is arbitrary (it doesn't need to be a tablename in your gis or something- the layer is specified by the mapservice layer index number) but the tablename you specify in a url has to match a tablename in on of the configured layers.  
+
+Here's an example widget config in viewer.js
 ```javascript
             urlParams: {
                 include:true, 
@@ -78,5 +80,5 @@ example config in viewer.js
                         }
                     ]
                 }
-            }```
+            }
             
